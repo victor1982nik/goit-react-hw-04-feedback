@@ -1,4 +1,3 @@
-import { Notification } from 'components/Notification/Notification';
 import PropTypes from 'prop-types';
 import { Paragraph } from './Statistics.styled';
 
@@ -10,14 +9,10 @@ export function Statistics({ good, neutral, bad, total, positivePercentage }) {
         <Paragraph>Neutral: {neutral}</Paragraph>
         <Paragraph>Bad: {bad}</Paragraph>
       </ul>
-      {total !== 0 ? (
-        <>
-          <Paragraph>Total: {total}</Paragraph>
-          <Paragraph>Positive feedback: {positivePercentage}%</Paragraph>
-        </>
-      ) : (
-        <Notification message="There is no feedback" />
-      )}
+      <>
+        <Paragraph>Total: {total}</Paragraph>
+        <Paragraph>Positive feedback: {positivePercentage}%</Paragraph>
+      </>
     </>
   );
 }

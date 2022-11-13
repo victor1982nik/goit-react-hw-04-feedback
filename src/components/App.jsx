@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Section } from './Section/Section';
 import { Statistics } from './Statistics/Statistics';
 import { FeedbackOptions } from './FeedbackOptions/FeedbackOptions';
+import { Notification } from './Notification/Notification';
 
 const btnNames = ['good', 'neutral', 'bad'];
 
@@ -37,13 +38,17 @@ export function App() {
         <FeedbackOptions options={btnNames} onLeaveFeedback={handleClick} />
       </Section>
       <Section title="Statistics">
-        <Statistics
-          good={good}
-          neutral={neutral}
-          bad={bad}
-          total={total}
-          positivePercentage={positiveFeedback}
-        />
+        {total !== 0 ? (
+          <Statistics
+            good={good}
+            neutral={neutral}
+            bad={bad}
+            total={total}
+            positivePercentage={positiveFeedback}
+          />
+        ) : (
+          <Notification message="There is no feedback" />
+        )}
       </Section>
     </div>
   );
